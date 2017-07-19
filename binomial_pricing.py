@@ -77,3 +77,17 @@ def charm(payoff,underlying,position,h):
 st = gen_underlying(10,2,1.0596)
 bo = gen_bond(95.16,2,1,0.04)
 print(delta(gen_call(10,st,bo),st,(0,0)))
+def delta_hedge(underlying, call, put,position):
+    #Returns the necessary number of call and put options to short/long to delta hedge the underlying
+    #in the format
+    #[num_call
+    # num_put]
+    m = underlying.shape[0]
+    u,d = position
+    delta_call = delta (call, underlying,position)
+    delta_put = delta(put,underlying,position)
+    value_call = call[d,m-1-u]
+    value_put =  put[d,m-1-u]
+    matrix = np.array([[value_call,value_put],[delta_call,delta_put]])
+    soln = np.array([[0],[-1]])
+    return np.linalg.inv(matrix).dot(soln)
