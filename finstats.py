@@ -17,3 +17,4 @@ def moment(x,n, mu =False, sig = False):
         return sum([(val-int(mu)*avg)**n for val in x ])/l
     else:
         return sum([((val-int(mu)*avg)/sigma)**n for val in x])/l
+#swag
