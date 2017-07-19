@@ -74,9 +74,6 @@ def charm(payoff,underlying,position,h):
     dD = delta(payoff,underlying,(u+1,d)) - delta(payoff,underlying,(u,d+1))
     dt = 2*h
     return dD/dt
-st = gen_underlying(10,2,1.0596)
-bo = gen_bond(95.16,2,1,0.04)
-print(delta(gen_call(10,st,bo),st,(0,0)))
 def delta_hedge(underlying, call, put,position):
     #Returns the necessary number of call and put options to short/long to delta hedge the underlying
     #in the format
