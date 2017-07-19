@@ -17,6 +17,7 @@ def gen_bond(current_price, num_steps,total_years,i):
         for d in range(size):
             B[d,num_steps-u] = current_price*(1+i)**((u+d)*total_years/(num_steps)) if u+d<size else 0
     return B
+    #sfdsfsdfsdfsdfdsfsfw
 
 def gen_call (strike, underlying, bond):
     m = underlying.shape[0]
