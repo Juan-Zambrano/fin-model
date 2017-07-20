@@ -17,3 +17,12 @@ def moment(x,n, mu =False, sig = False):
         return sum([(val-int(mu)*avg)**n for val in x ])/l
     else:
         return sum([((val-int(mu)*avg)/sigma)**n for val in x])/l
+def realized_vol(returns):
+    n = len(returns)
+    ssq = sum([r**2 for r in returns])
+    return 100*np.sqrt(252*ssq/n)
+def daily_returns(prices):
+    n = len(prices)-1
+    return [np.log(prices[i+1]/prices[i]) for i in range(n)]
+
+    
